@@ -65,3 +65,6 @@ gem 'carrierwave'
 gem 'fog-aws'
 
 gem 'dotenv-rails'
+
+# HTTP通信
+gem 'rack-cors'
