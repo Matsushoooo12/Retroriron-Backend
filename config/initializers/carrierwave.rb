@@ -6,7 +6,7 @@ CarrierWave.configure do |config|
       aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
       region: ENV['AWS_REGION'],
     }
-    config.fog_directory = 's3-practice02'
+    config.fog_directory = ENV['AWS_BUCKET']
 end
 
 CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
