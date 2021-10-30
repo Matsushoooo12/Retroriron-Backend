@@ -7,7 +7,7 @@ RailsAdmin.config do |config|
   ## == Devise ==
   config.authenticate_with do
     authenticate_or_request_with_http_basic('Site Message') do |username, password|
-      username == ENV['USER_NAME'] && password == ENV['USER_NAME']
+      username == ENV['USER_NAME'].to_s && password == ENV['USER_NAME'].to_s
     end
   end
   # config.authenticate_with do
