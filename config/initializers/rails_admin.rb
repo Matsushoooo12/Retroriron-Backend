@@ -8,9 +8,11 @@ RailsAdmin.config do |config|
   config.authenticate_with do
     authenticate_or_request_with_http_basic('Site Message') do |username, password|
       (
-        username == ENV["USER_NAME1"] && ENV["USER_PASSWORD1"]
+        ActiveSupport::SecurityUtils.secure_compare(username, ENV["USER_NAME1"]) &
+        ActiveSupport::SecurityUtils.secure_compare(password, ENV["USER_PASSWORD1"])
       ) | (
-        username == ENV["USER_NAME2"] && ENV["USER_PASSWORD2"]
+        ActiveSupport::SecurityUtils.secure_compare(username, ENV["USER_NAME2"]) &
+        ActiveSupport::SecurityUtils.secure_compare(password, ENV["USER_PASSWORD2"])
       )
     end
   end
