@@ -7,7 +7,26 @@ RailsAdmin.config do |config|
   ## == Devise ==
   config.authenticate_with do
     authenticate_or_request_with_http_basic('Site Message') do |username, password|
-      username == "username" && password == "password"
+      username == ENV['USER_NAME'] && password == ENV['USER_PASSWORD']
+    end
+  end
+
+  module RailsAdmin 
+    module Config 
+      module Fields 
+        module Types 
+          class Datetime < RailsAdmin::Config::Fields::Base
+            register_instance_option :date_format do 
+              :default
+            end
+          end
+          class Date < RailsAdmin::Config::Fields::Types::Datetime 
+            register_instance_option :date_format do 
+              :default
+            end
+          end
+        end 
+      end 
     end
   end
   # config.authenticate_with do
