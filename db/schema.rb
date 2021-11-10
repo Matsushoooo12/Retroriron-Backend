@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_31_160203) do
+ActiveRecord::Schema.define(version: 2021_11_10_135218) do
 
   create_table "contacts", force: :cascade do |t|
     t.string "name", null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_10_31_160203) do
 
   create_table "discographies", force: :cascade do |t|
     t.string "title", null: false
-    t.date "date", null: false
+    t.date "date"
     t.string "image", null: false
     t.string "mv_link"
     t.string "subscription_link"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_10_31_160203) do
 
   create_table "lives", force: :cascade do |t|
     t.string "title", null: false
-    t.date "date", null: false
+    t.date "date"
     t.time "open_time"
     t.time "start_time"
     t.string "venue"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2021_10_31_160203) do
 
   create_table "news", force: :cascade do |t|
     t.string "title", null: false
-    t.date "date", null: false
+    t.date "date"
     t.text "content", null: false
     t.string "image"
     t.boolean "image_vertical"

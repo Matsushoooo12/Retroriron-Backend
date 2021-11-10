@@ -9,7 +9,6 @@ ja:
     attributes:
       live:
         title: タイトル
-        date: 日付
         open_time: 開場時間
         start_time: 開演時間
         venue: 場所
@@ -21,20 +20,17 @@ ja:
         ticket_link: チケットURL
       news:
         title: タイトル
-        date: 日付
         content: 内容
         image: 画像
         image_vertical: 縦画像→チェック
       discography:
         title: タイトル
-        date: 日付
         image: 画像
         mv_link: ミュージックビデオURL
         subscription_link: サブスクリプションURL
         tag: シングル or アルバム
       ticket:
         title: タイトル
-        date: 日付
         name_kana: 名前（カナ）
         number: 枚数
         email: メールアドレス
