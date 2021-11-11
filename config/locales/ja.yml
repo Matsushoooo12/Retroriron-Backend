@@ -1,7 +1,0 @@
-ja:
-  date:
-    formats:
-      default: "%Y.%m.%d"
-  time:
-    formats:
-      default: "%y.%m.%d %H:%M"
