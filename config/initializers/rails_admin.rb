@@ -11,6 +11,8 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.main_app_name = %w(レトロリロン 管理サイト)
+
   # config.authenticate_with do
   #   warden.authenticate! scope: :user
   # end
