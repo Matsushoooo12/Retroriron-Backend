@@ -4,6 +4,7 @@ class Api::V1::TicketsController < ApplicationController
         ticket = Ticket.new(ticket_params)
         if ticket.save
             TicketMailer.send_mail(ticket).deliver_now
+            TicketMailer.send_admin_mail(ticket).deliver_now
             render json: ticket
         else
             render json: ticket.errors, status: 422
