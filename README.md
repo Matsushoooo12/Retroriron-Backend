@@ -201,3 +201,38 @@ CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
 ENV["~~"]という箇所は S ３を作成した際のアクセスキーやシークレットアクセスキーにしたがってサーバー側に登録する。
 
 実際に画像をアップロードして、画像がバケット内に保存されていたら成功です。
+
+## チケット予約時に予約者にメール送信
+
+- 入力されたメールアドレスにメールを送信
+  - メール送信元を設定する必要
+
+config/environments/development.rb
+
+```
+config.action_mailer.default_options = { from: ENV["EMAIL_ADDRESS"] }
+# hostにはデフォルトでlocalhost3000になっているので、Railsのポート番号である3001に変更する。
+config.action_mailer.default_url_options = { host: 'localhost:3001' }
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                  587,
+  domain:               'gmail.com',
+  user_name:            ENV["EMAIL_ADDRESS"],
+  password:             ENV["EMAIL_PASSWORD"],
+  authentication:       'plain',
+  enable_starttls_auto:  true
+}
+```
+
+Gmail のパスワードを取得
+
+Gmail で２段階認証をオンにし、アプリパスワードを取得する。
+
+https://accounts.google.com/signin/v2/challenge/pwd?continue=https%3A%2F%2Fmyaccount.google.com%2Fapppasswords&service=accountsettings&osid=1&rart=ANgoxccVr9suYl7GzWv-ZjatyHtjXe1QrhYMrXcFNpo0mr31JFPzr_rVIrpf9OlpNrKdD299LUoHkP1NK7-doFdlRwBL0gU8NA&TL=AM3QAYam4TsACWwtCgIK_RPwqjjCCXIMxDUIYi6JxwoTCzGZXOC61mRHG_iOXuxc&flowName=GlifWebSignIn&cid=1&flowEntry=ServiceLogin
+
+![](https://storage.googleapis.com/zenn-user-upload/b937d33dca8b-20220124.png)
+
+取得したパスワードは環境変数に設定するため控えておく。
+
+登録したメールアドレスとパスワードを環境変数に設定 → 本番では Heroku 側
