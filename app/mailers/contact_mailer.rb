@@ -1,5 +1,5 @@
 class ContactMailer < ApplicationMailer
-    default from: 'matsush.oooo12@gmail.com'
+    default from: 'retroriron@gmail.com'
     def send_mail(contact)
         @contact = contact
         mail(to: @contact.email, subject: 'お問い合わせありがとうございます。')
@@ -7,6 +7,6 @@ class ContactMailer < ApplicationMailer
 
     def send_admin_mail(contact)
         @contact = contact
-        mail(to: 'gokusho.matsusho@gmail.com', subject: 'お問い合わせが届きました。')
+        mail(to: 'retroriron@gmail.com', subject: 'お問い合わせが届きました。')
     end
 end
