@@ -1,12 +1,12 @@
 class TicketMailer < ApplicationMailer
-    default from: 'retroriron@gmail.com'
+    default from: ENV['EMAIL_ADDRESS']
     def send_mail(ticket)
         @ticket = ticket
-        mail(to: @ticket.email, subject: 'レトロリロンのチケット予約が完了しました。')
+        mail(to: @ticket.email, subject: 'レトロリロンのチケット予約確認メール')
     end
 
     def send_admin_mail(ticket)
         @ticket = ticket
-        mail(to: 'retroriron@gmail.com', subject: 'チケット予約が届きました。')
+        mail(to: ENV['EMAIL_ADDRESS'], subject: 'レトロリロンのチケット予約確認メール')
     end
 end

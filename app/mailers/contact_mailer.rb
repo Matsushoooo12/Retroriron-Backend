@@ -1,12 +1,12 @@
 class ContactMailer < ApplicationMailer
-    default from: 'retroriron@gmail.com'
+    default from: ENV['EMAIL_ADDRESS']
     def send_mail(contact)
         @contact = contact
-        mail(to: @contact.email, subject: 'お問い合わせありがとうございます。')
+        mail(to: @contact.email, subject: 'レトロリロンへのお問い合わせ確認メール')
     end
 
     def send_admin_mail(contact)
         @contact = contact
-        mail(to: 'retroriron@gmail.com', subject: 'お問い合わせが届きました。')
+        mail(to: ENV['EMAIL_ADDRESS'], subject: 'レトロリロンへのお問い合わせ確認メール')
     end
 end
