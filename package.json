@@ -15,6 +15,6 @@
     "webpack-dev-server": "^3"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node --openssl-legacy-provider server.js"
   }
 }
